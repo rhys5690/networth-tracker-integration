@@ -1,4 +1,6 @@
 class AccountsController < ApplicationController
+
+  require 'capybara/poltergeist'
   def new
     if Account.where(user_id: current_user.id).first
       @account_exists = true
@@ -32,33 +34,21 @@ class AccountsController < ApplicationController
   def show
     if Account.where(user_id: current_user.id).first
       @account = Account.where(user_id: current_user.id).first
-      values_to_input = ['72806279', '5690', 'rhys5690']
-      a = Mechanize.new
-      a.follow_meta_refresh = true
-      a.redirect_ok = true
-      page = a.get('https://ibanking.stgeorge.com.au/ibank/loginPage.action')
+      values_to_input = %w[72806279 5690 rhys5690]
 
-      pp  page.form_with(action: 'logonActionSimple.action')
-      form = page.form_with(action: 'logonActionSimple.action') do |f|
-        used_fields = f.fields.select do |field|
-          case field.name
-          when 'userId'
-            true
-          when 'securityNumber'
-            true
-          when 'password'
-            true
-          else
-            false
-          end
-        end
-
-        used_fields[0].value = values_to_input[0]
-        used_fields[1].value = values_to_input[1]
-        used_fields[2].value = values_to_input[2]
+      Capybara.register_driver :poltergeist do |app|
+        Capybara::Poltergeist::Driver.new(app, js_errors: false)
       end
-      button = form.button_with(:value => "Logon")
-      a.submit(form, button)
+
+      # Configure Capybara to use Poltergeist as the driver
+      Capybara.default_driver = :poltergeist
+
+      session = Capybara::Session.new(:poltergeist)
+
+      session.visit('https://ibanking.stgeorge.com.au/ibank/loginPage.action')
+      session.fill_in 'securityNumber', with: '5690'
+
+      puts session.body
 
       @networth_total = 35_000
       @account_exists = true
