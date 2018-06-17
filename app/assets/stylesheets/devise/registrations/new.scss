@@ -1,0 +1,29 @@
+.sign-up {
+  max-width: 500px;
+  margin: auto;
+  display: block;
+}
+
+.sign-up__form-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sign-up__form-wrapper__form, .sign-up__form-wrapper__form__input-wrapper__input, .sign-up__form-wrapper__form__button {
+  width: 100%;
+}
+
+.sign-up__form-wrapper__form__input-wrapper {
+  margin-bottom: 1rem;
+}
+
+.sign-up__form-wrapper__form__input-wrapper__input {
+  border: 1px solid #212529;
+}
+
+#datepicker {
+  margin-bottom: 210px;
+}

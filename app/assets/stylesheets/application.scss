@@ -1,0 +1,22 @@
+@import "bootstrap";
+@import "accounts/show";
+@import "accounts/new";
+@import "datepicker";
+@import "devise/registrations/new";
+@import "devise/sessions/new";
+
+p {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.application-wrapper {
+  padding: 0 25px;
+}

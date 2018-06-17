@@ -1,0 +1,30 @@
+.account-form {
+  max-width: 500px;
+  margin: auto;
+  display: block;
+}
+
+.account-form__form-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.account-form__form-wrapper__form, .account-form__form-wrapper__form__input-wrapper__input, .account-form__form-wrapper__form__button {
+  width: 100%;
+}
+
+.account-form__form-wrapper__form__input-wrapper {
+  margin-bottom: 1rem;
+}
+
+.account-form__form-wrapper__form__input-wrapper__input {
+  border: 1px solid #212529;
+}
+
+.account-form__form-wrapper__form__title-text {
+  text-align: center;
+  margin: 20px 0;
+}

@@ -1,0 +1,21 @@
+.log-in {
+  max-width: 500px;
+  margin: auto;
+  display: block;
+}
+
+.log-in__form-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.log-in__form-wrapper__form, .log-in__form-wrapper__form__input-wrapper__input, .log-in__form-wrapper__form__button {
+  width: 100%;
+}
+
+.log-in__form-wrapper__form__input-wrapper {
+  margin-bottom: 1rem;
+}

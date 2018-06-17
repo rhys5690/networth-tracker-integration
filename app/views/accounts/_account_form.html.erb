@@ -1,0 +1,23 @@
+<div class='account-form'>
+  <div class='account-form__form-wrapper'>
+    <h1 class='account-form__form-wrapper__form__title-text'>
+      St George Bank Log In
+    </h1>
+    <%= form_for @account, remote: true, html: {class: "account-form__form-wrapper__form"} do |f| %>
+      <div class='account-form__form-wrapper__form__input-wrapper'>
+        <%= f.label(:access_number, "Card/Access Number:") %>
+        <%= f.text_field :access_number, class: 'account-form__form-wrapper__form__input-wrapper__input' %>
+        <div class='account-form__form-wrapper__form__input-wrapper'>
+          <%= f.label(:security_number, "Security Number:") %>
+          <%= f.text_field :security_number, class: 'account-form__form-wrapper__form__input-wrapper__input' %>
+        </div>
+        <div class='account-form__form-wrapper__form__input-wrapper'>
+          <%= f.label(:internet_password, "Internet Password:") %>
+          <%= f.text_field :internet_password, class: 'account-form__form-wrapper__form__input-wrapper__input' %>
+        </div>
+        <div class='account-form__form-wrapper__form__input-wrapper'>
+          <%= f.submit 'save', class: 'btn btn-primary account-form__form-wrapper__form__button' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
