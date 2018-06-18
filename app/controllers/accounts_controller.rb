@@ -34,7 +34,6 @@ class AccountsController < ApplicationController
   def show
     if Account.where(user_id: current_user.id).first
       @account = Account.where(user_id: current_user.id).first
-      values_to_input = %w[72806279 5690 rhys5690]
 
       Capybara.register_driver :poltergeist do |app|
         Capybara::Poltergeist::Driver.new(app, js_errors: false)
@@ -46,10 +45,14 @@ class AccountsController < ApplicationController
       session = Capybara::Session.new(:poltergeist)
 
       session.visit('https://ibanking.stgeorge.com.au/ibank/loginPage.action')
+      session.fill_in 'access-number', with: '72806279'
       session.fill_in 'securityNumber', with: '5690'
+      session.fill_in 'internet-password', with: 'rhys5690'
+      session.click_on 'Logon'
+      session.click_on 'Express Freedom'
+      session.click_link 'transHistExport'
 
-      puts session.body
-
+      pp session
       @networth_total = 35_000
       @account_exists = true
     else
