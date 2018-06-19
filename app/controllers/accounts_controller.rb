@@ -52,7 +52,7 @@ class AccountsController < ApplicationController
       session.click_on 'Express Freedom'
       session.click_link 'transHistExport'
 
-      pp session
+      byebug
       @networth_total = 35_000
       @account_exists = true
     else
